@@ -3,14 +3,25 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        Hashtable<Character, Integer> contenedor = new Hashtable<Character, Integer>();
+        List<Character> nom = new ArrayList<>();
+        nom.add('m');
+        nom.add('a');
+        nom.add('r');
+        nom.add('c');
 
-            contenedor.put('m',2);
-            contenedor.put('a',2);
-            contenedor.put('r',1);
-            contenedor.put('c',1);
-            contenedor.put('d',1);
-            contenedor.put('e',1);
-            contenedor.put('s',1);
+        Hashtable<Character, Integer> contenedor = new Hashtable<Character, Integer>();
+        for (Character i : nom) {
+            System.out.println(i);
+            int counter = 0;
+            for (Character j : nom){
+                if (i==j){
+                    counter++;
+                }
+                //System.out.println(counter);
+            }
+            contenedor.put(i,counter);
+            //contenedor.put(i);
+        }
+        System.out.println(contenedor);
     }
 }
