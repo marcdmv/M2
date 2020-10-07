@@ -1,9 +1,6 @@
 package itacademy;
 
-import java.io.CharArrayReader;
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Main {
 
@@ -12,21 +9,21 @@ public class Main {
         Scanner nameInput = new Scanner(System.in);
         System.out.println("Introduce tu nombre:");
         name = nameInput.nextLine();
+        Text nameObj = new Text(name);
 
+        //-------------------------------
         System.out.println("FASE 1");
-        char[] nameArray = name.toCharArray();
-
+        char[] nameArray = nameObj.textToCharArray(name);
         for (char ch : nameArray) {
             System.out.println(ch);
         }
 
+        //-------------------------------
         System.out.println("FASE 2");
-
-        char[] nameArrayFase2 = name.toCharArray();
 
         List<Character> nameList = new ArrayList<>();
 
-        for (char ch : nameArrayFase2) {
+        for (char ch : nameArray) {
             nameList.add(ch);
         }
         System.out.println(nameList);
@@ -34,14 +31,16 @@ public class Main {
             if (i=='a' || i=='e' || i=='i' || i=='o' || i=='u'){
                 System.out.println(i + " es una VOCAL");
             } else if (Character.isDigit(i)) {
-                System.out.println("Los nombres no pueden contener números!’.");
+                System.out.println("Los nombres no pueden contener números!.");
+                System.exit(1);
             } else {
                 System.out.println(i + " es una CONSONANTE");
             }
         }
 
+        //-------------------------------
         System.out.println("FASE 3");
-        Hashtable<Character, Integer> contenedor = new Hashtable<Character, Integer>();
+        Hashtable<Character, Integer> contenedor = new Hashtable<>();
         for (Character i : nameList) {
             System.out.println(i);
             int counter = 0;
@@ -56,6 +55,7 @@ public class Main {
         }
         System.out.println(contenedor);
 
+        //-------------------------------
         System.out.println("FASE 4");
 
         String surname;
@@ -63,7 +63,8 @@ public class Main {
         System.out.println("Introduce tu apellido:");
         surname = surnameInput.nextLine();
 
-        char[] surnameArray = surname.toCharArray();
+        Text surnameObj = new Text(surname);
+        char[] surnameArray = surnameObj.textToCharArray(surname);
 
         List<Character> surnameList = new ArrayList<>();
 
@@ -71,12 +72,12 @@ public class Main {
             surnameList.add(ch);
         }
 
-        List<Character> fullname = new ArrayList<Character>();
+        List<Character> fullname = new ArrayList<>();
         fullname.addAll(nameList);
         String espacio = " ";
         fullname.add(espacio.toCharArray()[0]);
         fullname.addAll(surnameList);
-        System.out.println(fullname);
+        System.out.println("Nombre completo: " + fullname);
     }
 
 }
